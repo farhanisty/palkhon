@@ -10,12 +10,17 @@ namespace Core::Page {
 
 class MenuPage : public Page {
 private:
-  std::vector<PageItem *> pageItems;
   std::string input = "";
   bool isConfigured = false;
 
+protected:
+  std::vector<PageItem *> pageItems;
+
 public:
   virtual void configureMenu() = 0;
+  virtual void before() {};
+  virtual void after();
+
   void addMenu(std::string label, Page *page);
   void execute();
   std::string getInput();
